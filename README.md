@@ -40,7 +40,6 @@ E = {(1,a),(2,b),(3,c)}  (para verificación de funciones)
 ├── operaciones_conjuntos.py    # Lógica matemática
 ├── main.py                     # Interfaz de usuario
 ├── README.md                   # Este archivo
-└── documentacion.tex           # Documentación en LaTeX
 ```
 
 ## Requisitos
@@ -103,8 +102,8 @@ Elementos: (1,a),(2,b),(3,c)
 
 El programa analiza si un conjunto de parejas ordenadas representa una función matemática:
 
-- ✅ **Es función**: Cada elemento del dominio aparece exactamente una vez
-- ❌ **No es función**: Hay elementos repetidos en el dominio
+- **Es función**: Cada elemento del dominio aparece exactamente una vez
+- **No es función**: Hay elementos repetidos en el dominio
 
 Ejemplo:
 ```
@@ -120,19 +119,7 @@ La documentación completa está disponible en el archivo `documentacion.tex` co
 - Análisis de resultados
 - Código fuente comentado
 
-## Compilar Documentación
 
-```bash
-pdflatex documentacion.tex
-```
-
-## Contribuir
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/nueva-operacion`)
-3. Commit tus cambios (`git commit -am 'Agregar nueva operación'`)
-4. Push a la rama (`git push origin feature/nueva-operacion`)
-5. Abre un Pull Request
 
 ## Licencia
 
