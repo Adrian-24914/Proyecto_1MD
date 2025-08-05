@@ -1,4 +1,6 @@
 class Conjunto:
+
+
     #se va representar los conjuntos matematicos (simples)
 
     def __init__(self, elementos=None, nombre=""):
@@ -18,4 +20,11 @@ class Conjunto:
         elementos_resultado = self.elementos.union(otro.elementos)
         return Conjunto(elementos_resultado, nombre_resultado)
 
-    #falta interseccion, diferencia, complemento etc...
+    def interseccion (self, otro):
+         #es la operacion de A interseccion B
+        nombre_resultado = f"({self.nombre}  ∩ {otro.nombre})"
+        elementos_resultado = self.elementos.intersection(otro.elementos)
+        return Conjunto(elementos_resultado, nombre_resultado)
+
+
+
