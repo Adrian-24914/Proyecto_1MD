@@ -254,7 +254,7 @@ def ejecutar_producto_cartesiano(conjuntos):
     print(f"{conjuntos[nombre1]}")
     print(f"{conjuntos[nombre2]}")
     print(f"Producto cartesiano: {resultado}")
-    print(f"Cardinalidad: {len(resultado.elementos)}")
+    print(f"Cardinalidad: {len(resultado)}")
 
 
 def verificar_funcion(conjuntos):
@@ -287,16 +287,15 @@ def ejecutar_operacion_parentesis(conjuntos):
     nombre2 = solicitar_conjunto(conjuntos, "Conjunto B: ")
     nombre3 = solicitar_conjunto(conjuntos, "Conjunto C: ")
     
-    resultado = agrupacion_union_interseccion(
-        conjuntos[nombre1], 
-        conjuntos[nombre2], 
-        conjuntos[nombre3]
-    )
+    # Calculamos directamente: (A ∪ B) ∩ C
+    union_ab = conjuntos[nombre1].union(conjuntos[nombre2])
+    resultado = union_ab.interseccion(conjuntos[nombre3])
     
     print(f"{conjuntos[nombre1]}")
     print(f"{conjuntos[nombre2]}")
     print(f"{conjuntos[nombre3]}")
-    print(f"Resultado (A ∪ B) ∩ C: {resultado}")
+    print(f"Paso 1 - A ∪ B: {union_ab}")
+    print(f"Paso 2 - (A ∪ B) ∩ C: {resultado}")
 
 
 def definir_conjunto(conjuntos):

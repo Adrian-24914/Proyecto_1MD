@@ -44,6 +44,15 @@ class Conjunto:
             for elemento_b in otro.elementos:
                 resultado.append((elemento_a, elemento_b))
         return resultado
+
+    def es_funcion(self):
+        if not all(isinstance(x, tuple) and len(x) == 2 for x in self.elementos):
+            return False
+
+        if not self.elementos:
+            return True
+        dominio = [a for (a, b) in self.elementos]
+        return len(dominio) == len(set(dominio))
     
     def es_vacio(self):
         return len(self.elementos) == 0
