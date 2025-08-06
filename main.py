@@ -1,8 +1,7 @@
-from operaciones import Conjunto, agrupacion_union_interseccion
-
+from operaciones import Conjunto
 
 def crear_conjuntos_ejemplo():
-    """Crea los conjuntos del ejercicio"""
+    # Crea los conjuntos del ejercicio
     U = Conjunto(['a','b','c','d','e','f','g','h','i','j','k',1,2,3,4,5], 'U')
     A = Conjunto(['a',1,3,'d','g','h',4,5], 'A')
     B = Conjunto([2,1,4,'e','f','g','k'], 'B')
@@ -14,7 +13,7 @@ def crear_conjuntos_ejemplo():
 
 
 def inicializar_conjuntos():
-    """Permite al usuario elegir entre conjuntos predefinidos o crear los suyos"""
+    # Permite al usuario elegir entre conjuntos predefinidos o crear los suyos
     print("¿Como quieres inicializar los conjuntos?")
     print("1. Usar conjuntos predefinidos del ejercicio")
     print("2. Crear mis propios conjuntos")
@@ -42,17 +41,17 @@ def inicializar_conjuntos():
 
 
 def crear_conjuntos_personalizados():
-    """Permite crear conjuntos personalizados al inicio"""
+    # Permite crear conjuntos personalizados al inicio
     conjuntos = {}
     
-    print("\nCreacion de conjuntos personalizados")
+    print("Creacion de conjuntos personalizados")
     print("Puedes crear hasta 6 conjuntos. Deja vacio para terminar.")
     print("Para parejas ordenadas usa formato: (1,a),(2,b)")
     
     nombres_disponibles = ['U', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'X', 'Y', 'Z']
     
     for i in range(6):
-        nombre = input(f"\nNombre del conjunto {i+1} (o Enter para terminar): ").upper().strip()
+        nombre = input(f"Nombre del conjunto {i+1} (o Enter para terminar): ").upper().strip()
         
         if not nombre:
             break
@@ -73,7 +72,7 @@ def crear_conjuntos_personalizados():
 
 
 def solicitar_elementos_con_parejas():
-    """Solicita elementos incluyendo soporte para parejas ordenadas"""
+    # Solicita elementos incluyendo soporte para parejas ordenadas
     entrada = input("Elementos: ").strip()
     
     if not entrada:
@@ -87,7 +86,7 @@ def solicitar_elementos_con_parejas():
 
 
 def parsear_parejas_ordenadas(entrada):
-    """Procesa parejas ordenadas como (1,a),(2,b)"""
+    # Procesa parejas ordenadas como (1,a),(2,b)
     try:
         # Remover espacios y separar por parejas
         entrada = entrada.replace(' ', '')
@@ -122,7 +121,7 @@ def parsear_parejas_ordenadas(entrada):
 
 
 def parsear_elementos_simples(entrada):
-    """Procesa elementos simples separados por comas"""
+    # Procesa elementos simples separados por comas
     elementos = []
     for elem in entrada.split(','):
         elem = elem.strip()
@@ -135,7 +134,7 @@ def parsear_elementos_simples(entrada):
 
 
 def mostrar_menu():
-    print("\n" + "="*50)
+    print("="*50)
     print("CALCULADORA DE OPERACIONES DE CONJUNTOS")
     print("="*50)
     print("1. Ver conjuntos actuales")
@@ -152,7 +151,7 @@ def mostrar_menu():
 
 
 def mostrar_conjuntos(conjuntos):
-    print("\nConjuntos disponibles:")
+    print("Conjuntos disponibles:")
     for nombre, conjunto in conjuntos.items():
         print(f"  {conjunto}")
 
@@ -180,26 +179,12 @@ def solicitar_conjunto(conjuntos, mensaje="Ingresa el nombre del conjunto: "):
 
 
 def solicitar_elementos():
-    """Solicita elementos al usuario y los procesa"""
-    entrada = input("Ingresa los elementos separados por comas: ")
-    if not entrada.strip():
-        return []
-    
-    elementos = []
-    for elem in entrada.split(','):
-        elem = elem.strip()
-        try:
-            # Intenta convertir a numero
-            elementos.append(int(elem))
-        except ValueError:
-            # Si no es numero, lo mantiene como string
-            elementos.append(elem)
-    
-    return elementos
+    # Solicita elementos al usuario y los procesa
+    return solicitar_elementos_con_parejas()
 
 
 def ejecutar_union(conjuntos):
-    print("\nOperacion: Union")
+    print("Operacion: Union")
     mostrar_conjuntos(conjuntos)
     
     nombre1 = solicitar_conjunto(conjuntos, "Primer conjunto: ")
@@ -207,13 +192,13 @@ def ejecutar_union(conjuntos):
     
     resultado = conjuntos[nombre1].union(conjuntos[nombre2])
     
-    print(f"\n{conjuntos[nombre1]}")
+    print(f"{conjuntos[nombre1]}")
     print(f"{conjuntos[nombre2]}")
     print(f"Resultado: {resultado}")
 
 
 def ejecutar_interseccion(conjuntos):
-    print("\nOperacion: Interseccion")
+    print("Operacion: Interseccion")
     mostrar_conjuntos(conjuntos)
     
     nombre1 = solicitar_conjunto(conjuntos, "Primer conjunto: ")
@@ -221,13 +206,13 @@ def ejecutar_interseccion(conjuntos):
     
     resultado = conjuntos[nombre1].interseccion(conjuntos[nombre2])
     
-    print(f"\n{conjuntos[nombre1]}")
+    print(f"{conjuntos[nombre1]}")
     print(f"{conjuntos[nombre2]}")
     print(f"Resultado: {resultado}")
 
 
 def ejecutar_diferencia(conjuntos):
-    print("\nOperacion: Diferencia")
+    print("Operacion: Diferencia")
     mostrar_conjuntos(conjuntos)
     
     nombre1 = solicitar_conjunto(conjuntos, "Primer conjunto (A): ")
@@ -235,13 +220,13 @@ def ejecutar_diferencia(conjuntos):
     
     resultado = conjuntos[nombre1].diferencia(conjuntos[nombre2])
     
-    print(f"\n{conjuntos[nombre1]}")
+    print(f"{conjuntos[nombre1]}")
     print(f"{conjuntos[nombre2]}")
     print(f"Resultado A \\ B: {resultado}")
 
 
 def ejecutar_complemento(conjuntos):
-    print("\nOperacion: Complemento")
+    print("Operacion: Complemento")
     mostrar_conjuntos(conjuntos)
     
     if 'U' not in conjuntos or len(conjuntos['U'].elementos) == 0:
@@ -252,13 +237,13 @@ def ejecutar_complemento(conjuntos):
     
     resultado = conjuntos[nombre].complemento(conjuntos['U'])
     
-    print(f"\nUniverso: {conjuntos['U']}")
+    print(f"Universo: {conjuntos['U']}")
     print(f"Conjunto: {conjuntos[nombre]}")
     print(f"Complemento: {resultado}")
 
 
 def ejecutar_producto_cartesiano(conjuntos):
-    print("\nOperacion: Producto Cartesiano")
+    print("Operacion: Producto Cartesiano")
     mostrar_conjuntos(conjuntos)
     
     nombre1 = solicitar_conjunto(conjuntos, "Primer conjunto: ")
@@ -266,20 +251,20 @@ def ejecutar_producto_cartesiano(conjuntos):
     
     resultado = conjuntos[nombre1].producto_cartesiano(conjuntos[nombre2])
     
-    print(f"\n{conjuntos[nombre1]}")
+    print(f"{conjuntos[nombre1]}")
     print(f"{conjuntos[nombre2]}")
     print(f"Producto cartesiano: {resultado}")
     print(f"Cardinalidad: {len(resultado.elementos)}")
 
 
 def verificar_funcion(conjuntos):
-    print("\nVerificacion de funcion")
+    print("Verificacion de funcion")
     mostrar_conjuntos(conjuntos)
     
     nombre = solicitar_conjunto(conjuntos, "Conjunto a verificar: ")
     conjunto = conjuntos[nombre]
     
-    print(f"\nConjunto: {conjunto}")
+    print(f"Conjunto: {conjunto}")
     
     if conjunto.es_funcion():
         print("Resultado: ES una funcion")
@@ -295,7 +280,7 @@ def verificar_funcion(conjuntos):
 
 
 def ejecutar_operacion_parentesis(conjuntos):
-    print("\nOperacion: (A ∪ B) ∩ C")
+    print("Operacion: (A ∪ B) ∩ C")
     mostrar_conjuntos(conjuntos)
     
     nombre1 = solicitar_conjunto(conjuntos, "Conjunto A: ")
@@ -308,27 +293,39 @@ def ejecutar_operacion_parentesis(conjuntos):
         conjuntos[nombre3]
     )
     
-    print(f"\n{conjuntos[nombre1]}")
+    print(f"{conjuntos[nombre1]}")
     print(f"{conjuntos[nombre2]}")
     print(f"{conjuntos[nombre3]}")
     print(f"Resultado (A ∪ B) ∩ C: {resultado}")
 
 
 def definir_conjunto(conjuntos):
-    print("\nDefinir nuevo conjunto")
+    print("Definir nuevo conjunto")
     
-    nombre = input("Nombre del conjunto: ").upper()
-    elementos = solicitar_elementos()
+    nombre = input("Nombre del conjunto: ").upper().strip()
+    
+    if not nombre:
+        print("Nombre no puede estar vacio")
+        return
+    
+    print("Para parejas ordenadas usa formato: (1,a),(2,b)")
+    elementos = solicitar_elementos_con_parejas()
     
     conjuntos[nombre] = Conjunto(elementos, nombre)
     print(f"Conjunto {nombre} creado: {conjuntos[nombre]}")
 
 
 def main():
-    conjuntos = crear_conjuntos_ejemplo()
+    print("=== CALCULADORA DE TEORIA DE CONJUNTOS ===")
     
-    print("Bienvenido a la Calculadora de Teoria de Conjuntos")
-    print("Conjuntos precargados con los ejemplos del ejercicio")
+    # Inicializar conjuntos según preferencia del usuario
+    conjuntos = inicializar_conjuntos()
+    
+    if conjuntos:
+        print(f"Conjuntos inicializados: {len(conjuntos)}")
+        mostrar_conjuntos(conjuntos)
+    else:
+        print("Empezando sin conjuntos. Usa la opcion 9 para crear conjuntos.")
     
     opciones = {
         '1': lambda: mostrar_conjuntos(conjuntos),
@@ -345,25 +342,36 @@ def main():
     continuar = True
     operaciones_realizadas = 0
     
-    while continuar and operaciones_realizadas < 20:
+    while continuar and operaciones_realizadas < 25:
+        if not conjuntos and operaciones_realizadas > 0:
+            print("No tienes conjuntos definidos. Usa la opcion 9 para crear conjuntos.")
+        
         mostrar_menu()
-        opcion = input("\nSelecciona una opcion: ").strip()
+        opcion = input("Selecciona una opcion: ").strip()
         
         if opcion == '0':
             print("Programa terminado")
             continuar = False
-        elif opcion in opciones:
+        elif opcion == '9':
+            # Definir conjunto siempre está disponible
             opciones[opcion]()
             operaciones_realizadas += 1
+        elif opcion in opciones:
+            if not conjuntos:
+                print("Necesitas al menos un conjunto. Usa la opcion 9 para crear conjuntos.")
+            else:
+                opciones[opcion]()
+                operaciones_realizadas += 1
             
-            if operaciones_realizadas < 19:
-                respuesta = input("\n¿Continuar? (s/n): ").lower()
+            if operaciones_realizadas < 24 and continuar:
+                respuesta = input("¿Continuar? (s/n): ").lower()
                 continuar = respuesta.startswith('s')
         else:
             print("Opcion no valida")
     
-    if operaciones_realizadas >= 20:
+    if operaciones_realizadas >= 25:
         print("Limite de operaciones alcanzado")
 
 
 main()
+
