@@ -119,12 +119,3 @@ La documentación completa está disponible en el archivo `documentacion.tex` co
 - Análisis de resultados
 - Código fuente comentado
 
-
-
-## Licencia
-
-Este proyecto es de uso académico para el curso de Teoría de Conjuntos.
-
-## Soporte
-
-Para preguntas o problemas, contacta a cualquiera de los autores del proyecto.
